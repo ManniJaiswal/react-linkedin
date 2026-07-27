@@ -5,7 +5,7 @@ export default function NotificationsSidebar(){
             <p className="text-base text-gray-500">Stay on top of activity across your network.</p>
             <div className="flex flex-col gap-2 mt-4">
                 
-                <div className="flex items-center w-150 border justify-between bg-blue-100 border-blue-300 p-3 opacity-80 hover:bg-white rounded-lg gap-4">
+                <div className="flex items-center w-full border justify-between bg-blue-100 border-blue-300 p-3 opacity-80 hover:bg-white rounded-lg gap-4">
                 <div className="flex items-center gap-2">
                     <img className="h-12 w-12 rounded-full" src="https://i.pravatar.cc/120?img=47"></img>
                     <div>
@@ -19,7 +19,7 @@ export default function NotificationsSidebar(){
                     </div>
                 
                 
-               <div className="flex items-center w-150 border justify-between bg-blue-100 border-blue-300 p-3 opacity-80 hover:bg-white rounded-lg gap-4">
+               <div className="flex items-center w-full border justify-between bg-blue-100 border-blue-300 p-3 opacity-80 hover:bg-white rounded-lg gap-4">
                 <div className="flex items-center gap-2">
                 <img className="h-12 w-12 rounded-full" src="https://i.pravatar.cc/120?img=49"></img>
                     <div>
@@ -30,7 +30,7 @@ export default function NotificationsSidebar(){
                     
                     <div className=" h-2 w-2 bg-blue-500 rounded-full"></div>
                     </div>
-                    <div className="flex items-center w-150 border justify-between bg-white border-blue-300 p-3 opacity-80 hover:bg-gray-100 rounded-lg gap-4">
+                    <div className="flex items-center w-full border justify-between bg-white border-blue-300 p-3 opacity-80 hover:bg-gray-100 rounded-lg gap-4">
                 <div className="flex items-center gap-2">
                     <img className="h-12 w-12 rounded-full" src="https://i.pravatar.cc/120?img=33"></img>
                 
@@ -43,7 +43,7 @@ export default function NotificationsSidebar(){
                 
                     </div>
                
-               <div className="flex items-center w-150 border justify-between bg-white border-blue-300 p-3 opacity-80 hover:bg-gray-100 rounded-lg gap-4">
+               <div className="flex items-center w-full border justify-between bg-white border-blue-300 p-3 opacity-80 hover:bg-gray-100 rounded-lg gap-4">
                 <div className="flex items-center gap-2">
                     <img className="h-12 w-12 rounded-full" src="https://i.pravatar.cc/120?img=44"></img>
                 

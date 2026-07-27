@@ -3,7 +3,7 @@ import Home from "../pages/Home";
 import MyNetwork from "../pages/MyNetwork";
 import Notifications from "../pages/Notifications";
 import Profile from "../pages/Profile";
-import Logout from "../pages/Logout";
+import Login from "../pages/Login";
 import Settings from "../pages/Settings";
 import Signup from "../pages/Signup";
 
@@ -34,8 +34,8 @@ const router = createBrowserRouter([
     element: <Settings />,
   },
   {
-    path: "/logout",
-    element: <Logout />,
+    path: "/login",
+    element: <Login />,
   },
   {
     path: "/signup",

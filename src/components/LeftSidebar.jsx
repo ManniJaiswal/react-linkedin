@@ -70,7 +70,7 @@ export default function LeftSidebar() {
     
         <div className="flex items-center cursor-pointer gap-3 rounded-xl px-3 py-2.5 text-sm font-medium hover:bg-gray-200">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-log-out h-[18px] w-[18px]" aria-hidden="true"><path d="m16 17 5-5-5-5"></path><path d="M21 12H9"></path><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path></svg>
-            <Link to={"/logout"}>Logout</Link>
+            <Link to={"/login"}>Logout</Link>
 </div>
     </div>
     </div>

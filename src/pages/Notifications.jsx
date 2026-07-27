@@ -8,7 +8,7 @@ export default function Notifications(){
         <>
         <Navbar />
         <div className="bg-blue-50">
-            <div className="flex gap-6 max-w-5xl p-6">
+            <div className="flex gap-6 p-6">
             <LeftSidebar />
             <NotificationSidebar />
             </div>
