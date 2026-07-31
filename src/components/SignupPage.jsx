@@ -6,24 +6,29 @@ export default function SignupPage() {
   const initialState = {
     firstName: "",
     lastName: "",
-    email:"",
-    phoneNumber:"",
-    password:"",
-    confirmPassword:"",
+    email: "",
+    phoneNumber: "",
+    password: "",
+    confirmPassword: "",
   }
 
   const formik = useFormik({
     initialValues: initialState,
-    onSubmit: async (values)=>{
+    onSubmit: async (values, { resetForm }) => {
       console.log(values);
-       const result = await axiosInstance.post("api/auth/signup", values);
-       console.log(result);
+      try {
+        const result = await axiosInstance.post("api/auth/signup", values);
+        resetForm();
+      }
+      catch (error) {
+        console.log(error);
+      }
     }
   })
   return (
     <>
       <div className="min-h-screen flex flex-col items-center justify-center">
-        <div className="w-full max-w-md">                       
+        <div className="w-full max-w-md">
           <div className="flex gap-2 items-center py-4">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-briefcase h-5 w-5" aria-hidden="true" className="bg-blue-500 rounded-xl text-white h-9 w-9 p-2"><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path><rect width="20" height="14" x="2" y="6" rx="2"></rect></svg>
             <p className="text-lg font-bold">ConnectPro</p>
@@ -59,8 +64,8 @@ export default function SignupPage() {
                       name="firstName"
                       value={formik.values.firstName}
                       onChange={formik.handleChange}
-                    
-                      
+
+
                       className="w-full border rounded-lg px-2 py-1 shadow-md   border border-gray-200 focus:bg-white focus:border-blue-500 focus:outline-none"
                     />
                   </div>
@@ -74,7 +79,7 @@ export default function SignupPage() {
                       name="lastName"
                       value={formik.values.lastName}
                       onChange={formik.handleChange}
-                    
+
                       className="w-full border rounded-lg px-2 py-1 shadow-md   border border-gray-200 focus:bg-white focus:border-blue-500 focus:outline-none"
                     />
                   </div>
@@ -85,9 +90,10 @@ export default function SignupPage() {
                   </label>
                   <input
                     type="email"
+                    autoComplete="off"
                     name="email"
-                      value={formik.values.email}
-                      onChange={formik.handleChange}
+                    value={formik.values.email}
+                    onChange={formik.handleChange}
                     className="w-full border rounded-lg px-2 py-1 shadow-md   border border-gray-200 focus:bg-white focus:border-blue-500 focus:outline-none"
                   />
                 </div>
@@ -98,8 +104,8 @@ export default function SignupPage() {
                   <input
                     type="tel"
                     name="phoneNumber"
-                      value={formik.values.phoneNumber}
-                      onChange={formik.handleChange}
+                    value={formik.values.phoneNumber}
+                    onChange={formik.handleChange}
                     className="w-full border rounded-lg px-2 py-1 shadow-md   border border-gray-200 focus:bg-white focus:border-blue-500 focus:outline-none"
                   />
                 </div>
@@ -110,6 +116,7 @@ export default function SignupPage() {
                     </label>
                     <input
                       type="password"
+                      autoComplete="new-password"
                       name="password"
                       value={formik.values.password}
                       onChange={formik.handleChange}
@@ -122,6 +129,7 @@ export default function SignupPage() {
                     </label>
                     <input
                       type="password"
+                      autoComplete="new-password"
                       onChange={formik.handleChange}
                       name="confirmPassword"
                       value={formik.values.confirmPassword}
@@ -129,8 +137,20 @@ export default function SignupPage() {
                     />
                   </div>
                 </div>
-                <button type="submit" className="text-white bg-blue-600 rounded-3xl py-2 w-full px-10">Create Account</button>
-
+                <button
+                  type="submit"
+                  className="text-white bg-blue-600 rounded-3xl py-2 w-full px-10 flex items-center justify-center gap-2 disabled:bg-blue-400"
+                  disabled={formik.isSubmitting}
+                >
+                  {formik.isSubmitting ? (
+                    <>
+                      <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                      <span>Creating Account...</span>
+                    </>
+                  ) : (
+                    "Create Account"
+                  )}
+                </button>
                 <p className="text-sm text-gray-500 text-center">Already have an account?   {""}
 
                   <Link to="/login" className="text-blue-600 font-medium hover:underline cursor-pointer">
