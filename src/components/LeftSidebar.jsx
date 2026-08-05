@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export default function LeftSidebar() {
+export default function LeftSidebar() {   
   return (
     <>
     <div className="w-72 flex flex-col gap-4 sticky top-20 self-start">

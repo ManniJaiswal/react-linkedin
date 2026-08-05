@@ -6,9 +6,8 @@ import Profile from "../pages/Profile";
 import Login from "../pages/Login";
 import Settings from "../pages/Settings";
 import Signup from "../pages/Signup";
-
-
 const router = createBrowserRouter([
+  
   {
     path: "/",
     element: <Home />,

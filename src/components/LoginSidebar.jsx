@@ -11,12 +11,26 @@ export default function LoginSidebar() {
   }
   const formik = useFormik({
     initialValues: initialState,
-    onSubmit: async (values) => {
+    onSubmit: async (values , {resetForm}) => {
       console.log(values);
-
-      const result = await axiosInstance.post("/api/auth/login", values);
+      try{
+      const result = await axiosInstance.post("/api/auth/login", values,
+      {
+        withCredential:true
+      });
       console.log(result);
-      navigate("/");
+      console.log(result.data.success);
+      if(result.data.success==true)
+      {
+        navigate("/");
+      };
+    }
+      catch(error)
+      {
+        console.log(error);
+        console.log(error.response.data);
+      }
+
     },
   });
 
@@ -106,15 +120,9 @@ export default function LoginSidebar() {
                 >
                   Create an account
                 </Link></p>
-
               </div>
             </form>
-
           </div>
-
-
-
-
         </div>
         <div className="bg-blue-500 p-10 flex flex-col justify-between">
           <div className="space-y-6">
