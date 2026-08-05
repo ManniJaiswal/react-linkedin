@@ -3,7 +3,7 @@ import axios from 'axios';
 // 1. Create instance with baseline production configs
 const axiosInstance = axios.create({
   baseURL: "https://linkedin-clone-backend-qapn.onrender.com",
-  timeout: 15000, // 15 seconds timeout
+  timeout: 150000, // 15 seconds timeout
   headers: {
     'Content-Type': 'application/json',
     Accept: 'application/json',

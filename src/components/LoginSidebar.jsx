@@ -1,42 +1,35 @@
-import { Link,useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import axiosInstance from "../axios/axiosInstance";
+import { useState } from "react";
 
 
 export default function LoginSidebar() {
-    const navigate = useNavigate();
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
   const initialState = {
     email: "",
     password: "",
   }
   const formik = useFormik({
     initialValues: initialState,
-    onSubmit: async (values , {resetForm}) => {
+    onSubmit: async (values, { resetForm }) => {
       console.log(values);
-      try{
-      const result = await axiosInstance.post("/api/auth/login", values,
-      {
-        withCredential:true
-      });
-      console.log(result);
-      console.log(result.data.success);
-      if(result.data.success==true)
-      {
-        navigate("/");
-      };
-    }
-      catch(error)
-      {
-        console.log(error);
-        console.log(error.response.data);
+      try {
+        const result = await axiosInstance.post("/api/auth/login", values,
+          {
+            withCredential: true
+          });
+          if (result?.success == true) {
+          navigate("/");
+        };
       }
-
+      catch (error) {
+        setError(error)
+        console.log(error);
+      }
     },
   });
-
-
-
-
 
   return (
     <>
@@ -101,7 +94,7 @@ export default function LoginSidebar() {
                 <div>
                   <button
                     type="submit"
-                    className="text-white bg-blue-600 rounded-3xl py-2 w-full px-10 flex items-center justify-center gap-2"
+                    className="text-white bg-blue-600 rounded-3xl py-2 w-full px-10 flex items-center justify-center gap-2 disabled:opacity-50"
                     disabled={formik.isSubmitting}
                   >
                     {formik.isSubmitting ? (
@@ -122,6 +115,8 @@ export default function LoginSidebar() {
                 </Link></p>
               </div>
             </form>
+            <div>{error.message}</div>
+
           </div>
         </div>
         <div className="bg-blue-500 p-10 flex flex-col justify-between">
@@ -155,7 +150,6 @@ export default function LoginSidebar() {
             </div>
           </div>
         </div>
-
 
 
 
