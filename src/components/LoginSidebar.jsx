@@ -18,7 +18,7 @@ export default function LoginSidebar() {
       try {
         const result = await axiosInstance.post("/api/auth/login", values,
           {
-            withCredential: true
+            withCredentials: true
           });
           if (result?.success == true) {
           navigate("/");
