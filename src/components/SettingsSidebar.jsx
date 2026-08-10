@@ -13,7 +13,7 @@ export default function SettingsSidebar()
         <div className="">
              <h1 className="text-2xl font-bold">Settings</h1>
             <p className="text-base text-gray-500 py-2">Manage your account, privacy, and preferences.</p>
-            <div className="space-y-4">
+            <div className="space-y-4 max-w-xl">
             <div className="border rounded-lg p-6 bg-white border-gray-200 shadow-lg">
                 <div className="flex gap-2">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user h-4 w-4" aria-hidden="true" className=" h-8 w-8 text-blue-500 bg-blue-100 border border-blue-200 p-1 rounded-lg "><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
@@ -21,11 +21,11 @@ export default function SettingsSidebar()
                 </div>
                 <div className="mt-6">
                 <form>
-                    <div className="grid grid-cols-[150px_1fr] gap-2 items-center mb-4">
+                    <div className="grid grid-cols-[90px_1fr] gap-2 items-center mb-4">
                 <label for="email" className="font-medium text-gray-500">Email</label>
                 <input type="email" id="email" name="email" className="border border-gray-200 bg-white shadow-lg rounded-lg focus:border-blue-500 w-[400px] p-1"></input>
                 </div>
-                <div className="grid grid-cols-[150px_1fr] gap-2 items-center font-medium text-gray-500">
+                <div className="grid grid-cols-[90px_1fr] gap-2 items-center font-medium text-gray-500">
                 <label for="phone" className="font-medium text-gray-500">Phone</label>
                 <input
                 className="border border-gray-200 bg-white shadow-lg rounded-lg bg-white shadow-lg rounded-lg focus:border-blue-500  w-[400px] p-1"
@@ -48,11 +48,11 @@ export default function SettingsSidebar()
                 </div>
                 <div className="mt-6">
                 <form>
-                    <div className="grid grid-cols-[150px_1fr] gap-2 items-center mb-4">
+                    <div className="grid grid-cols-[90px_1fr] gap-2 items-center mb-4">
                 <label for="email" className="font-medium text-gray-500">Display Name</label>
                 <input type="email" id="email" name="email" className="border border-gray-200 bg-white shadow-lg rounded-lg focus:border-blue-500 w-[400px] p-1"></input>
                 </div>
-                <div className="grid grid-cols-[150px_1fr] gap-2 items-center font-medium text-gray-500">
+                <div className="grid grid-cols-[90px_1fr] gap-2 items-center font-medium text-gray-500">
                 <label for="phone" className="font-medium text-gray-500">Headline</label>
                 <input
                 className="border border-gray-200 bg-white shadow-lg rounded-lg bg-white shadow-lg rounded-lg focus:border-blue-500  w-[400px] p-1"
@@ -75,15 +75,15 @@ export default function SettingsSidebar()
                 </div>
                 <div>
                     <form>
-                        <div className="grid grid-cols-[150px_1fr] gap-2 items-center mb-4">
+                        <div className="grid grid-cols-[90px_1fr] gap-2 items-center mb-4">
                 <label for="password" className="font-medium text-gray-500">Current</label>
                 <input type="password" id="password" name="password" className="border border-gray-200 bg-white shadow-lg rounded-lg focus:border-blue-500 w-[400px] p-1"></input>
                 </div>
-                <div className="grid grid-cols-[150px_1fr] gap-2 items-center mb-4">
+                <div className="grid grid-cols-[90px_1fr] gap-2 items-center mb-4">
                 <label for="password" className="font-medium text-gray-500">New</label>
                 <input type="password" id="password" name="password" className="border border-gray-200 bg-white shadow-lg rounded-lg focus:border-blue-500 w-[400px] p-1"></input>
                 </div>
-                <div className="grid grid-cols-[150px_1fr] gap-2 items-center">
+                <div className="grid grid-cols-[90px_1fr] gap-2 items-center">
                 <label for="password" className="font-medium text-gray-500">Confirm</label>
                 <input type="password" id="password" name="password" className="border border-gray-200 bg-white shadow-lg rounded-lg focus:border-blue-500 w-[400px] p-1"></input>
                 </div>

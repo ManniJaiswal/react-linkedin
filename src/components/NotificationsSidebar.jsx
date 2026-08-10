@@ -3,8 +3,7 @@ export default function NotificationsSidebar(){
         <div className="">
             <h1 className="text-3xl font-bold">Notifications</h1>
             <p className="text-base text-gray-500">Stay on top of activity across your network.</p>
-            <div className="flex flex-col gap-2 mt-4">
-                
+            <div className="flex flex-col gap-2 mt-4 max-w-2xl">
                 <div className="flex items-center w-full border justify-between bg-blue-100 border-blue-300 p-3 opacity-80 hover:bg-white rounded-lg gap-4">
                 <div className="flex items-center gap-2">
                     <img className="h-12 w-12 rounded-full" src="https://i.pravatar.cc/120?img=47"></img>

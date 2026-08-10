@@ -6,13 +6,7 @@ import NotificationSidebar from "../components/NotificationsSidebar";
 export default function Notifications(){
     return(
         <>
-        <Navbar />
-        <div className="bg-blue-50">
-            <div className="flex gap-6 p-6">
-            <LeftSidebar />
-            <NotificationSidebar />
-            </div>
-        </div>
+        <NotificationSidebar />
         </>
     )
 }

@@ -16,11 +16,14 @@ export default function LoginSidebar() {
     onSubmit: async (values, { resetForm }) => {
       console.log(values);
       try {
-        const result = await axiosInstance.post("/api/auth/login", values,
-          {
+        const result = await axiosInstance.post("/api/auth/login", values, {
             withCredentials: true
           });
-          if (result?.success == true) {
+        console.log("LOGIN RESPONSE:", result);
+        console.log("LOGIN DATA:", result.data);
+        if (result?.success == true) {
+          resetForm();
+          localStorage.setItem("authData", JSON.stringify(result));
           navigate("/");
         };
       }

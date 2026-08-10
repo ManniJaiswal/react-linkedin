@@ -1,4 +1,6 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Layout from "../layout/Layout"; 
+import ProtectedRoute from "./protectedRoute";
 import Home from "../pages/Home";
 import MyNetwork from "../pages/MyNetwork";
 import Notifications from "../pages/Notifications";
@@ -9,28 +11,29 @@ import Signup from "../pages/Signup";
 const router = createBrowserRouter([
   
   {
-    path: "/",
-    element: <Home />,
-  },
-  {
-    path:"/home",
-    element: <Home />,
-  },
-   {
-    path: "/network",
-    element: <MyNetwork />,
-  },
-  {
-    path: "/profile",
-    element: <Profile />,
-  },
-  {
-    path: "/notifications",
-    element: <Notifications />,
-  },
-  {
-    path: "/settings",
-    element: <Settings />,
+    element: <Layout />,
+    children: [
+      {
+        path: "/",
+        element: <ProtectedRoute><Home /></ProtectedRoute>
+      },
+      {
+        path: "/network",
+        element: <ProtectedRoute><MyNetwork /></ProtectedRoute>
+      },
+      {
+        path: "/profile",
+        element: <ProtectedRoute><Profile /></ProtectedRoute>
+      },
+      {
+        path: "/notifications",
+        element: <ProtectedRoute><Notifications /></ProtectedRoute>
+      },
+      {
+        path: "/settings",
+        element: <ProtectedRoute><Settings /></ProtectedRoute>
+      },
+    ],
   },
   {
     path: "/login",
