@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import axiosInstance from "../axios/axiosInstance";
 import { useState } from "react";
-
+import { toast } from "react-toastify";
 
 export default function LoginSidebar() {
   const [error, setError] = useState("");
@@ -13,22 +13,22 @@ export default function LoginSidebar() {
   }
   const formik = useFormik({
     initialValues: initialState,
-    onSubmit: async (values, { resetForm }) => {
+    onSubmit: async (values) => {
       console.log(values);
       try {
-        const result = await axiosInstance.post("/api/auth/login", values, {
-            withCredentials: true
-          });
+        const result = await axiosInstance.post("/api/auth/login", values);
         console.log("LOGIN RESPONSE:", result);
-        console.log("LOGIN DATA:", result.data);
-        if (result?.success == true) {
-          resetForm();
-          localStorage.setItem("authData", JSON.stringify(result));
+        console.log("LOGIN DATA:", result);
+        if (result?.success == true) { 
+          console.log(result?.message) 
+          toast.success(result?.message);
+          localStorage.setItem("authData", JSON.stringify(result));             
           navigate("/");
         };
       }
       catch (error) {
         setError(error)
+        toast.error("invalid user");
         console.log(error);
       }
     },

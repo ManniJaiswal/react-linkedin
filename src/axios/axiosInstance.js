@@ -8,23 +8,8 @@ const axiosInstance = axios.create({
     'Content-Type': 'application/json',
     Accept: 'application/json',
   },
+  withCredentials:true,
 });
-
-// 2. Request Interceptor: Inject dynamic data like Auth Tokens
-axiosInstance.interceptors.request.use(
-  (config) => {
-    // Retrieve the freshest token from storage
-    const token = localStorage.getItem('authToken'); 
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
-    }
-    return config;
-  },
-  (error) => {
-    return Promise.reject(error);
-  }
-);
-
 // 3. Response Interceptor: Centralized error and response parsing
 axiosInstance.interceptors.response.use(
   (response) => {
@@ -42,8 +27,8 @@ axiosInstance.interceptors.response.use(
       switch (error.response.status) {
         case 401:
           // Token expired or unauthorized -> clear storage & redirect
-          localStorage.removeItem('authToken');
-          window.location.href = '/login';
+          // localStorage.removeItem('authToken');
+          // window.location.href = '/login';
           fallbackError.message = 'Session expired. Please log in again.';
           break;
         case 403:

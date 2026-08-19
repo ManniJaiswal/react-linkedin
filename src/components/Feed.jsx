@@ -1,17 +1,37 @@
 import { useFormik } from "formik"
 import axiosInstance from "../axios/axiosInstance";
+import { useEffect, useState } from "react";
 
 
 export default function Feed() {
+    const [posts, setPosts] = useState([]);
     const initialState = {
         content: "",
         image: ""
     }
+    useEffect(() => {
+        getPosts();
+
+    }, []);
+
+        const getPosts = async () => {
+            try {
+                const authData = JSON.parse(localStorage.getItem("authData"));
+                console.log(authData);
+                const userId = authData.user.id;
+                const response = await axiosInstance.get(`/api/posts/user/${userId}`);
+                console.log(response.data);
+                setPosts(response.data);
+            } catch (error) {
+                console.log(error);
+            }
+        };
     const formik = useFormik({
         initialValues: initialState,
         onSubmit: async (values) => {
             const result = await axiosInstance.post("/api/posts", values)
             console.log(result);
+            formik.resetForm();
         }
     })
     return (
@@ -44,12 +64,18 @@ export default function Feed() {
                                 </div>
                             </div>
                             <div>
-                                <button class="inline-flex items-center justify-center gap-2 text-sm font-medium cursor-pointer transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 disabled:cursor-not-allowed [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 py-2 rounded-full px-5 hover:bg-green-500">Post</button>
+                                <button type="submit" 
+                                className="inline-flex items-center justify-center gap-2 text-sm font-medium cursor-pointer h-9 py-2 rounded-full px-5 hover:bg-green-500 disabled:opacity-50" disabled={formik.isSubmitting}>{formik.isSubmitting ? (
+                    "posting..."
+                  ) : (
+                "Post"
+                  )}
+               </button>
                             </div>
 
                         </div>
                     </div>
-                </form>
+                </form>                                           
                 <div className="rounded-xl bg-white shadow-lg p-0">
                     <div className="flex items-center gap-2 p-4">
 
@@ -69,7 +95,7 @@ export default function Feed() {
                         <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=1200&amp;q=70" alt="" className="max-h-[480px] w-full object-cover"></img>
                     </div>
                     <div className="flex items-center justify-between px-5 py-2 text-xs">
-                        <span className="text-gray-500">124 likes</span>
+                        <span className="text-gray-500"> 124 likes</span>
                         <button className="hover:text-primary text-gray-500">2 comments</button>
                     </div>
                     <div className="grid grid-cols-3 border-t border-border">
@@ -143,7 +169,7 @@ export default function Feed() {
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-share2 lucide-share-2 h-4 w-4" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"></line><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"></line></svg>
                             Share
                         </button>
-                    </div>
+                    </div> 
 
                 </div>
             </div>

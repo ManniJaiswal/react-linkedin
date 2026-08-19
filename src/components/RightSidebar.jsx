@@ -1,7 +1,7 @@
 export default function RightSidebar() {
     return (
         <>
-            <div className="w-96 flex flex-col gap-4 sticky top-20 self-start">
+            <div className="w-80 flex flex-col gap-4 sticky top-20 self-start">
                 <div className="rounded-xl p-5 shadow-lg bg-white">
                     <h3 className="text-sm font-semibold">People you may know</h3>
                     <div className="flex items-center justify-between">
